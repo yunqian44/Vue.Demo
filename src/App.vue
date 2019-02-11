@@ -15,6 +15,7 @@
 // })
 //Vue.component("news",news)
 
+
 export default {
   name: 'app',
   data () {
