@@ -104,24 +104,49 @@
     <div v-else>
       B
     </div>
-    <h4>5-3 v-else-if 指令  用法和js  C#里面的  else if一样</h4>
+    <h4>5-3 v-else-if 指令 用法和js C#里面的 else if一样</h4>
+    <hr>
+    <h3>6,路由</h3>
+    <div id="app">
+      <div class="row">
+        <div class="col-xs-2 col-xs-offset-2">
+          <div class="list-group">
+            <!--使用指令v-link进行导航-->
+            <router-link :to="{ path: '/App1'}">Home</router-link>
+            <router-link :to="{ path: '/App2'}">About</router-link>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="panel">
+            <div class="panel-body">
+              <!--用于渲染匹配的组件-->
+              <transition name="fade">
+              <router-view></router-view>
+              </transition>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <hr>
   </div>
 </template>
 
 
 <script>
-//import Vue from 'vue'
-// var news=Vue.extend({
-//   template:'#message',
+// import Vue from 'vue'
+// var news = Vue.extend({
+//   template: "<h1>你好</h1>"
+// });
+// Vue.component("news",{
+//   template: '<h1>自定义全局组件!</h1>'
 // })
-//Vue.component("news",news)
 
 export default {
   name: "app",
   data() {
     return {
-      type: 'B',
+      type: "B",
       one: true,
       two: true,
       selected: "",
@@ -130,7 +155,7 @@ export default {
       checkedNames: [],
       use: false,
       msg: "Hello Welcome to Your Vue.js App",
-      message: '<p style="background:red">Hello</p>'
+      message: '<p style="background:red">Hello</p>',
     };
   }
 };
