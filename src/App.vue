@@ -106,7 +106,23 @@
     </div>
     <h4>5-3 v-else-if 指令 用法和js C#里面的 else if一样</h4>
     <hr>
-    <h3>6,路由</h3>
+      <h3>6,组件</h3>
+    <h4>6-1 全局组件</h4>
+    <runoob></runoob>
+    <runoob1></runoob1>
+    <h4>6-2 局部组件</h4>
+    <section class="wrap">
+    <my-component></my-component>
+    </section>
+    <h4>6-3 Prop</h4>
+    <h5>prop 是父组件用来传递数据的一个自定义属性</h5>
+    <div>
+	  <input v-model="propData">
+	  <br>
+	  <child v-bind:message="propData"></child>
+	</div>
+    <hr>
+    <h3>7,路由</h3>
     <div id="app">
       <div class="row">
         <div class="col-xs-2 col-xs-offset-2">
@@ -132,16 +148,33 @@
   </div>
 </template>
 
+<script id='test1'>
+   <h1>第二种自定义组件!</h1>
+</script>
 
 <script>
-// import Vue from 'vue'
-// var news = Vue.extend({
-//   template: "<h1>你好</h1>"
-// });
-// Vue.component("news",{
-//   template: '<h1>自定义全局组件!</h1>'
-// })
+import Vue from 'vue'
+var news = Vue.extend({
+  template: "<h1>你好</h1>"
+});
 
+var news1 = Vue.extend({
+  template: "<h1>我是局部的</h1>"
+});
+// 注册runoob组件
+Vue.component('runoob', { 
+       template: '<h1>自定义全局组件!</h1>'
+      });
+
+// 注册runoob1组件
+ Vue.component('runoob1', news);
+
+ // 注册child
+Vue.component('child', {
+  // 声明 props
+  props: ['message'],
+  template: '<span>{{ message }}</span>'
+})
 export default {
   name: "app",
   data() {
@@ -151,13 +184,17 @@ export default {
       two: true,
       selected: "",
       picked: "",
+      propData:"",
       checked: false,
       checkedNames: [],
       use: false,
       msg: "Hello Welcome to Your Vue.js App",
-      message: '<p style="background:red">Hello</p>',
+      message: '<p style="background:red">Hello</p>'
     };
-  }
+  },
+   components: {
+       'my-component' : news1
+      }
 };
 </script>
 
